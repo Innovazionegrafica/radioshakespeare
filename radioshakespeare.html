@@ -8,9 +8,9 @@
     <style>
         /* Stile romantico maschile */
         body {
-            background: linear-gradient(to right, #2e3b55, #5c677d); /* Blu e grigio per profondità e romanticismo */
+            background: linear-gradient(to right, #2e3b55, #5c677d);
             font-family: 'Roboto Slab', serif;
-            color: #d4af37; /* Oro elegante */
+            color: #d4af37;
             text-align: center;
             padding: 50px;
             margin: 0;
@@ -25,17 +25,24 @@
             font-family: 'Playfair Display', serif;
             font-size: 4em;
             margin-bottom: 30px;
-            color: #ffffff; /* Bianco per Radio Shakespeare */
-            text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.6); /* Leggero bagliore */
+            text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.6);
+        }
+
+        .red {
+            color: #b22222; /* Rosso intenso per "Radio" */
+        }
+
+        .white {
+            color: #ffffff; /* Bianco per "Shakespeare" e l'emoji */
         }
 
         .radio-container {
-            background: linear-gradient(to bottom, #2b3747, #3c4a5f); /* Toni scuri e maschili */
+            background: linear-gradient(to bottom, #2b3747, #3c4a5f);
             border-radius: 20px;
             padding: 20px;
             width: 350px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Ombra scura elegante */
-            border: 2px solid #d4af37; /* Bordi dorati */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            border: 2px solid #d4af37;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -49,7 +56,7 @@
             left: 0;
             width: 100%;
             height: 120px;
-            background: rgba(255, 255, 255, 0); /* Trasparente */
+            background: rgba(255, 255, 255, 0);
             z-index: 2;
             cursor: pointer;
         }
@@ -62,67 +69,119 @@
             top: 0;
             left: 0;
             z-index: 1;
-            border-radius: 10px; /* Angoli arrotondati */
+            border-radius: 10px;
         }
 
         #song-details {
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 1em;
             text-align: center;
             line-height: 1.8;
-            background-color: rgba(46, 59, 85, 0.9); /* Blu scuro trasparente */
+            background-color: rgba(46, 59, 85, 0.9);
             padding: 20px;
             border-radius: 15px;
-            display: none; /* Nascosto inizialmente */
+            display: none;
             max-width: 800px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Ombra per effetto elegante */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
         }
 
         #play-instructions {
             margin-top: 10px;
-            font-size: 0.9em;
-            color: #d4af37; /* Oro per attenzione */
-            display: none;
+            font-size: 1em;
+            color: #ffffff; /* Bianco per il messaggio */
+            font-weight: bold;
         }
 
         .song-title {
             font-size: 1.8em;
-            color: #ffffff; /* Bianco per massimo contrasto */
-            margin-top: 40px; /* Spazio extra in basso */
+            color: #3cb371; /* Verde elegante per il titolo della canzone */
+            margin-top: 40px;
         }
 
-        a {
-            color: #f4a460; /* Color sabbia per i link */
+        .extra-link {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #b22222; /* Rosso per il link */
+            text-decoration: none;
+            font-weight: bold;
+            background-color: rgba(46, 59, 85, 0.9); /* Sfondo per contrasto */
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease; /* Animazione fluida */
+        }
+
+        .extra-link:hover {
+            color: #ffffff; /* Testo bianco al passaggio del mouse */
+            background-color: rgba(255, 255, 255, 0.1); /* Effetto hover chiaro */
+        }
+
+        .animated-info {
+            font-size: 1.2em;
+            color: #ffffff; /* Bianco per il testo che appare e scompare */
+            margin-top: 20px;
+            animation: fadeInfo 5s infinite; /* Animazione ciclica */
+        }
+
+        @keyframes fadeInfo {
+            0%, 100% {
+                opacity: 0; /* Nascondi testo */
+            }
+            50% {
+                opacity: 1; /* Mostra testo */
+            }
+        }
+
+        #book-link {
+            font-size: 1.2em; 
+            color: #ffffff; /* Bianco per il link del libro */
+            background-color: rgba(43, 55, 71, 0.8); /* Sfondo per contrasto */
+            padding: 10px 15px; 
+            border-radius: 10px; 
             text-decoration: none;
             font-weight: bold;
         }
 
-        a:hover {
-            text-decoration: underline;
+        #book-link:hover {
+            color: #ffd700; /* Colore testo giallo brillante al passaggio */
+            background-color: rgba(255, 255, 255, 0.1); /* Effetto leggero */
+            transform: scale(1.05); /* Leggero ingrandimento */
+            transition: all 0.3s ease;
         }
+
     </style>
 </head>
 <body>
 
-    <h1>Radio Shakespeare 🌹</h1>
+    <h1><span class="red">Radio</span> <span class="white">Shakespeare 🌹</span></h1>
 
     <div class="radio-container" id="mixcloudEmbedContainer" data-track="Il tuo cuore" data-artist="1999" data-book-link="https://example.com/libro1">
         <div id="click-layer"></div>
-        <iframe id="audio-player" class="audio-player" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Finnovazionegrafica%2Fil-tuo-cuore%2F"></iframe>
+        <iframe class="audio-player" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Finnovazionegrafica%2Fil-tuo-cuore%2F"></iframe>
     </div>
 
     <div id="song-details">
-        <p id="artist-name"></p>
-        <p><a href="#" id="book-link" target="_blank">Leggi il libro associato alla canzone</a></p>
+        <p id="artist-name">Artista: 1999</p>
+        <p><a href="#" id="book-link" target="_blank">📘 Leggi il libro associato alla canzone</a></p>
         <p id="play-instructions">Clicca sul lettore per avviare la musica!</p>
-        <h2 id="track-title" class="song-title"></h2>
+        <h2 id="track-title" class="song-title">Titolo: Il tuo cuore</h2>
     </div>
+
+    <div class="animated-info" id="other-song-info" style="display: none;">
+        Ascolta anche: "Nuova Vita" di "Innovazione Grafica"
+    </div>
+
+    <!-- Link aggiuntivo per ascoltare un'altra canzone -->
+    <a class="extra-link" href="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Finnovazionegrafica%2Fla-nuova-vita%2F" target="_blank">
+        🎵 Ascolta "La nuova vita"
+    </a>
 
     <script>
         const clickLayer = document.getElementById('click-layer');
+        const animatedInfo = document.getElementById('other-song-info');
+
         clickLayer.addEventListener('click', function() {
             // Cambia il colore di sfondo
-            document.body.style.backgroundColor = '#1e2d40'; /* Sfondo blu notte */
+            document.body.style.backgroundColor = '#1e2d40';
 
             // Mostra i dettagli della canzone
             const container = document.getElementById('mixcloudEmbedContainer');
@@ -132,7 +191,7 @@
 
             document.getElementById('artist-name').innerText = `Artista: ${artist}`;
             const linkElement = document.getElementById('book-link');
-            linkElement.href = bookLink; // Imposta il link al libro
+            linkElement.href = bookLink;
             document.getElementById('track-title').innerText = `Titolo: ${track}`;
             document.getElementById('song-details').style.display = 'block';
 
@@ -141,6 +200,9 @@
 
             // Rimuovi il layer trasparente per permettere il clic sull'iframe
             clickLayer.style.display = 'none';
+
+            // Attiva la scritta animata
+            animatedInfo.style.display = 'block';
         });
     </script>
 
