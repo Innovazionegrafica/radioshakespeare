@@ -49,14 +49,9 @@
             width: 350px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
             border: 2px solid #66bb6a; /* Lighter green border */
-        }
-
-        .speaker-grill {
-            background-color: #1b5e20; /* Even darker green */
-            height: 35px;
-            margin: 15px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .display {
@@ -68,13 +63,74 @@
             font-size: 1.3em;
             font-family: sans-serif;
             letter-spacing: 1px;
+            text-align: center;
         }
 
-        iframe {
-            width: 100%;
-            height: 120px;
+        .audio-controls {
             margin-top: 20px;
+        }
+
+        .audio-controls button {
+            background-color: #ff7043;
+            color: #fff;
             border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .audio-controls button:hover {
+            background-color: #e64a19;
+        }
+
+        .audio-list {
+            margin-top: 20px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .audio-list button {
+            width: 100%;
+            text-align: left;
+            background-color: #66bb6a;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .audio-list button:hover {
+            background-color: #43a047;
+        }
+
+        .presentation {
+            margin-top: 20px;
+            text-align: left;
+            background-color: rgba(33, 33, 33, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .presentation img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .presentation a {
+            color: #ff7043;
+            text-decoration: none;
+        }
+
+        .presentation a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -91,11 +147,70 @@
 
     <div class="radio-container">
         <div class="display">Il tuo cuore non è mica un ladro</div>
-        <div class="speaker-grill"></div>
-        <div class="speaker-grill"></div>
-
-        <iframe src="https://audius.co/innovazionegrafica" frameborder="0"></iframe>
+        <div class="audio-controls">
+            <button onclick="playAll()">Play All</button>
+        </div>
+        
+        <div class="audio-list">
+            <button onclick="selectTrack(0)">Il tuo cuore</button>
+            <button onclick="selectTrack(1)">Another Track</button>
+            <!-- Aggiungi altri brani come desideri -->
+        </div>
+        
+        <iframe id="audio-player" width="100%" height="120" frameborder="0"></iframe>
     </div>
+    
+    <div id="presentation" class="presentation"></div>
+
+    <script>
+        const tracks = [
+            {
+                url: 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Finnovazionegrafica%2Fil-tuo-cuore%2F',
+                title: 'Il tuo cuore',
+                description: 'Una presentazione coinvolgente su "Il tuo cuore".',
+                bookLink: 'https://example.com/book1',
+                coverImage: 'https://example.com/cover1.jpg'
+            },
+            {
+                url: 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Finnovazionegrafica%2Fanother-track%2F',
+                title: 'Another Track',
+                description: 'Scopri di più su "Another Track" e il libro correlato.',
+                bookLink: 'https://example.com/book2',
+                coverImage: 'https://example.com/cover2.jpg'
+            }
+        ];
+        
+        let currentTrack = 0;
+
+        function playAudio(url) {
+            const audioPlayer = document.getElementById('audio-player');
+            audioPlayer.src = url;
+        }
+
+        function playAll() {
+            if (currentTrack < tracks.length) {
+                playAudio(tracks[currentTrack].url);
+                showPresentation(currentTrack);
+                currentTrack++;
+                setTimeout(playAll, 300000); // Assuming each track is 5 minutes long (300000 ms)
+            } else {
+                currentTrack = 0; // Reset to the first track
+            }
+        }
+
+        function showPresentation(index) {
+            const presentation = document.getElementById('presentation');
+            const track = tracks[index];
+            presentation.innerHTML = `<img src="${track.coverImage}" alt="${track.title}"><h2>${track.title}</h2><p>${track.description}</p><p><a href="${track.bookLink}" target="_blank">Scopri di più</a></p>`;
+            presentation.style.display = 'block';
+        }
+
+        function selectTrack(index) {
+            currentTrack = index;
+            playAudio(tracks[index].url);
+            showPresentation(index);
+        }
+    </script>
 
 </body>
 </html>
