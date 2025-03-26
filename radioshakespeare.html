@@ -33,7 +33,7 @@
         }
 
         .white {
-            color: #ffffff; /* Bianco per "Shakespeare" e l'emoji */
+            color: #ffd700; /* Oro per "Shakespeare" */
         }
 
         .radio-container {
@@ -85,69 +85,185 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
         }
 
+        #artist-name {
+            color: #ffffff; /* Bianco per il testo */
+            background-color: #2e3b55; /* Sfondo scuro per contrasto */
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-top: 20px; /* Aggiunto margine superiore */
+        }
+
         #play-instructions {
             margin-top: 10px;
             font-size: 1em;
             color: #ffffff; /* Bianco per il messaggio */
             font-weight: bold;
+            opacity: 0; /* Nascondi il testo inizialmente */
         }
 
         .song-title {
             font-size: 1.8em;
-            color: #3cb371; /* Verde elegante per il titolo della canzone */
+            color: #ffd700; /* Giallo per il titolo della canzone */
             margin-top: 40px;
         }
 
-        .extra-link {
+        .extra-link, #book-link {
             margin-top: 20px;
             font-size: 1.2em;
-            color: #b22222; /* Rosso per il link */
+            color: #ffffff; /* Bianco per il testo */
             text-decoration: none;
             font-weight: bold;
             background-color: rgba(46, 59, 85, 0.9); /* Sfondo per contrasto */
             padding: 10px 15px;
+            border: 2px solid #d4af37; /* Bordi in oro */
             border-radius: 10px;
             transition: all 0.3s ease; /* Animazione fluida */
         }
 
-        .extra-link:hover {
-            color: #ffffff; /* Testo bianco al passaggio del mouse */
+        .extra-link:hover, #book-link:hover {
+            color: #ffd700; /* Testo oro al passaggio del mouse */
             background-color: rgba(255, 255, 255, 0.1); /* Effetto hover chiaro */
         }
 
-        .animated-info {
-            font-size: 1.2em;
-            color: #ffffff; /* Bianco per il testo che appare e scompare */
-            margin-top: 20px;
-            animation: fadeInfo 5s infinite; /* Animazione ciclica */
+        #show-cartoon-link {
+            cursor: pointer; /* Cambia il cursore quando si passa sull'area del fumetto */
         }
 
-        @keyframes fadeInfo {
-            0%, 100% {
-                opacity: 0; /* Nascondi testo */
-            }
-            50% {
-                opacity: 1; /* Mostra testo */
-            }
+        /* Stile per il carosello */
+        .carousel-container {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            background-color: rgba(43, 55, 71, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
         }
 
-        #book-link {
-            font-size: 1.2em; 
-            color: #ffffff; /* Bianco per il link del libro */
-            background-color: rgba(43, 55, 71, 0.8); /* Sfondo per contrasto */
-            padding: 10px 15px; 
-            border-radius: 10px; 
-            text-decoration: none;
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide img:hover {
+            transform: scale(1.05);
+        }
+
+        .controls {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .controls button {
+            background-color: #b22222; /* Sfondo rosso per le frecce */
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .controls button:hover {
+            background-color: #8b0000; /* Rosso scuro al passaggio del mouse */
+        }
+
+        .dots {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .dots .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #d4af37;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dots .dot.active {
+            background-color: #ffffff;
+        }
+
+        .autoplay-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .autoplay-controls button {
+            background-color: #d4af37;
+            color: #2e3b55;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
             font-weight: bold;
+            transition: background-color 0.3s ease;
         }
 
-        #book-link:hover {
-            color: #ffd700; /* Colore testo giallo brillante al passaggio */
-            background-color: rgba(255, 255, 255, 0.1); /* Effetto leggero */
-            transform: scale(1.05); /* Leggero ingrandimento */
-            transition: all 0.3s ease;
+        .autoplay-controls button:hover {
+            background-color: #ffffff;
         }
 
+        .autoplay-controls input {
+            width: 60px;
+            padding: 5px;
+            border: 2px solid #d4af37;
+            border-radius: 5px;
+            margin-left: 10px;
+            color: #2e3b55;
+            background-color: #ffffff;
+        }
+
+        /* Stile per il testo suddiviso */
+        .chunk {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+            .radio-container {
+                width: 100%;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .extra-link, #book-link {
+                font-size: 1em;
+                padding: 8px 10px;
+                border-radius: 8px;
+            }
+            #play-instructions {
+                font-size: 0.9em;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -161,8 +277,13 @@
 
     <div id="song-details">
         <p id="artist-name">Artista: 1999</p>
-        <p><a href="#" id="book-link" target="_blank">📘 Leggi il libro associato alla canzone</a></p>
-        <p id="play-instructions">Clicca sul lettore per avviare la musica!</p>
+        <p><a href="#" id="book-link" target="_blank">🎵 Ascolta un altro brano a sorpresa</a></p>
+        <p id="play-instructions">
+            <span class="chunk">Clicca sul lettore</span> 
+            <span class="chunk">per avviare la musica,</span> 
+            <span class="chunk">posto in alto a destra</span> 
+            <span class="chunk">dell'immagine della canzone :)</span>
+        </p>
         <h2 id="track-title" class="song-title">Titolo: Il tuo cuore</h2>
     </div>
 
@@ -171,13 +292,49 @@
     </div>
 
     <!-- Link aggiuntivo per ascoltare un'altra canzone -->
-    <a class="extra-link" href="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Finnovazionegrafica%2Fla-nuova-vita%2F" target="_blank">
-        🎵 Ascolta "La nuova vita"
+    <a class="extra-link" id="show-cartoon-link">
+        📘 Leggi il fumetto di questa canzone
     </a>
+
+    <!-- Carosello di immagini -->
+    <div class="carousel-container" id="cartoon-carousel" style="display: none;"> <!-- Nascondi inizialmente -->
+        <div class="carousel">
+            <div class="carousel-slide">
+                <img src="/Users/sandisk/Downloads/ciao.png" alt="Image 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="/Users/sandisk/Downloads/ciaodue.png" alt="Image 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="image3.jpg" alt="Image 3">
+            </div>
+            <div class="carousel-slide">
+                <img src="image4.jpg" alt="Image 4">
+            </div>
+        </div>
+        <div class="controls">
+            <button id="prevBtn">&#10094;</button>
+            <button id="nextBtn">&#10095;</button>
+        </div>
+        <div class="dots">
+            <span class="dot" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+        </div>
+        <div class="autoplay-controls">
+            <button id="toggleAutoplay">Avvia Autoplay</button>
+            <label for="transitionTime">Tempo di Transizione (ms):</label>
+            <input type="number" id="transitionTime" value="3000" min="1000">
+        </div>
+    </div>
 
     <script>
         const clickLayer = document.getElementById('click-layer');
         const animatedInfo = document.getElementById('other-song-info');
+        const audioPlayer = document.querySelector('.audio-player');
+        const showCartoonLink = document.getElementById('show-cartoon-link');
+        const cartoonCarousel = document.getElementById('cartoon-carousel');
 
         clickLayer.addEventListener('click', function() {
             // Cambia il colore di sfondo
@@ -196,15 +353,100 @@
             document.getElementById('song-details').style.display = 'block';
 
             // Mostra il messaggio di istruzioni
-            document.getElementById('play-instructions').style.display = 'block';
+            typeWriterEffect();
 
             // Rimuovi il layer trasparente per permettere il clic sull'iframe
             clickLayer.style.display = 'none';
+        });
 
-            // Attiva la scritta animata
+        audioPlayer.addEventListener('play', function() {
+            // Mostra il fumetto
             animatedInfo.style.display = 'block';
         });
-    </script>
 
+        showCartoonLink.addEventListener('click', function() {
+            // Mostra il carosello
+            cartoonCarousel.style.display = 'block';
+        });
+
+        // Codice per il carosello di immagini
+        let currentIndex = 0;
+        let autoplayInterval = null;
+
+        const carousel = document.querySelector('.carousel');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const toggleAutoplayBtn = document.getElementById('toggleAutoplay');
+        const transitionTimeInput = document.getElementById('transitionTime');
+
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        dots.forEach(dot => dot.addEventListener('click', e => goToSlide(e.target.dataset.index)));
+        toggleAutoplayBtn.addEventListener('click', toggleAutoplay);
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(${-currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentIndex = parseInt(index);
+            updateCarousel();
+        }
+
+        function startAutoplay() {
+            const transitionTime = parseInt(transitionTimeInput.value);
+            autoplayInterval = setInterval(nextSlide, transitionTime);
+            toggleAutoplayBtn.textContent = 'Ferma Autoplay';
+        }
+
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+            toggleAutoplayBtn.textContent = 'Avvia Autoplay';
+        }
+
+        function toggleAutoplay() {
+            if (autoplayInterval) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        }
+
+        // Initialize carousel
+        updateCarousel();
+
+        // Funzione per l'effetto di digitazione
+        function typeWriterEffect() {
+            const textElement = document.getElementById('play-instructions');
+            const text = textElement.textContent;
+            textElement.textContent = '';
+            textElement.style.opacity = 1;
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    textElement.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, 50);
+                }
+            }
+            type();
+        }
+    </script>
 </body>
 </html>
