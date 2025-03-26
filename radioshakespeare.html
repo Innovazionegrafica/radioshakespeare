@@ -52,53 +52,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
         }
 
-        .audio-list {
-            margin-top: 20px;
-            text-align: left;
+        .song-cover {
             width: 100%;
+            border-radius: 10px;
+            display: block;
         }
 
-        .audio-list button {
+        .audio-player {
             width: 100%;
-            text-align: left;
-            background-color: #66bb6a;
-            color: #fff;
+            height: 120px;
             border: none;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-
-        .audio-list button:hover {
-            background-color: #43a047;
-        }
-
-        .presentation {
-            margin-top: 20px;
-            text-align: left;
-            background-color: rgba(33, 33, 33, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .presentation img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .presentation a {
-            color: #ff7043;
-            text-decoration: none;
-        }
-
-        .presentation a:hover {
-            text-decoration: underline;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
@@ -107,66 +76,17 @@
     <h1>Radio Shakespeare</h1>
 
     <div class="welcome-message">
-        Benvenuti su Radio Shakespeare, dove il romantico eterno incontra il digitale moderno. 🎭📻<br><br>
-        Se Shakespeare fosse un giovane del nostro tempo, lo immaginiamo come un innovatore audace, un poeta tecnologico che trasformerebbe le sue opere e i suoi versi in musica e podcast, collegando cuori e menti attraverso la magia delle frequenze digitali. Radio Shakespeare nasce con questa visione: essere il ponte tra passato e presente, dove i monologhi di Amleto diventano playlist emozionanti, e il romanticismo di Romeo e Giulietta si trasforma in storie che parlano a tutti.<br><br>
-        Con ogni episodio, celebriamo l'eredità di Shakespeare e lo immaginiamo come un ventenne che invierebbe brani musicali e poesie agli angoli più remoti del globo. La sua penna, oggi, sarebbe un microfono; il suo palcoscenico, una radio aperta al mondo intero.<br><br>
-        Sintonizzati, il viaggio sta per iniziare.
+       
+        Se Shakespeare fosse un giovane del nostro tempo, lo immaginiamo come un innovatore audace, un poeta tecnologico che trasformerebbe le sue opere e i suoi versi in musica e podcast, collegando cuori e menti attraverso la magia delle frequenze digitali. Radio Shakespeare nasce con questa visione: essere il ponte tra passato e presente
     </div>
 
     <div class="radio-container">
-        <div class="audio-list">
-            <button onclick="selectTrack(0)">Il tuo cuore</button>
-            <button onclick="selectTrack(1)">Another Track</button>
-            <!-- Aggiungi altri brani come desideri -->
-        </div>
-        
-        <iframe id="audio-player" width="100%" height="120" frameborder="0"></iframe>
+        <img src="https://example.com/cover1.jpg" alt="Il tuo cuore" class="song-cover" id="song-cover">
+        <iframe id="audio-player" class="audio-player" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Finnovazionegrafica%2Fil-tuo-cuore%2F"></iframe>
     </div>
-    
-    <div id="presentation" class="presentation"></div>
 
     <script>
-        const tracks = [
-            {
-                url: 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Finnovazionegrafica%2Fil-tuo-cuore%2F',
-                title: 'Il tuo cuore',
-                description: 'Una presentazione coinvolgente su "Il tuo cuore".',
-                bookLink: 'https://example.com/book1',
-                coverImage: 'https://example.com/cover1.jpg'
-            },
-            {
-                url: 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Finnovazionegrafica%2Fanother-track%2F',
-                title: 'Another Track',
-                description: 'Scopri di più su "Another Track" e il libro correlato.',
-                bookLink: 'https://example.com/book2',
-                coverImage: 'https://example.com/cover2.jpg'
-            }
-        ];
-        
-        let currentTrack = 0;
-
-        function playAudio(url) {
-            const audioPlayer = document.getElementById('audio-player');
-            audioPlayer.src = url;
-        }
-
-        function showPresentation(index) {
-            const presentation = document.getElementById('presentation');
-            const track = tracks[index];
-            presentation.innerHTML = `<img src="${track.coverImage}" alt="${track.title}"><h2>${track.title}</h2><p>${track.description}</p><p><a href="${track.bookLink}" target="_blank">Scopri di più</a></p>`;
-            presentation.style.display = 'block';
-        }
-
-        function selectTrack(index) {
-            currentTrack = index;
-            playAudio(tracks[index].url);
-            showPresentation(index);
-        }
-
-        // Automatically display the first track on page load
-        window.onload = function() {
-            selectTrack(0);
-        };
+        // No additional scripts needed
     </script>
 
 </body>
