@@ -78,6 +78,19 @@
             position: relative;
             z-index: 1;
         }
+
+        #song-details {
+            margin-top: 20px;
+            font-size: 1em;
+            max-width: 800px;
+            text-align: center;
+            line-height: 1.6;
+            background-color: rgba(33, 33, 33, 0.8); /* Semi-transparent black background */
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            display: none; /* Hidden by default */
+        }
     </style>
 </head>
 <body>
@@ -99,13 +112,37 @@
         <iframe id="audio-player" class="audio-player" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Finnovazionegrafica%2Fil-tuo-cuore%2F"></iframe>
     </div>
 
+    <div id="song-details">
+        <h2 id="song-title"></h2>
+        <p id="song-artist"></p>
+    </div>
+
     <script>
-        // Aggiungiamo un evento click al layer trasparente
-        document.getElementById('click-layer').addEventListener('click', function() {
-            document.body.style.backgroundColor = 'yellow';
-            console.log('Evento di clic gestito con successo!');
-        });
+        // Assicuriamoci che l'iframe sia pronto
+        window.onload = function() {
+            var iframe = document.getElementById('audio-player');
+            var player = new Mixcloud.PlayerWidget(iframe);
+
+            // Assegniamo l'evento click al layer trasparente
+            document.getElementById('click-layer').addEventListener('click', function() {
+                // Cambia il colore di sfondo
+                document.body.style.backgroundColor = 'yellow';
+                console.log('Evento di clic gestito con successo!');
+
+                // Avvia la riproduzione
+                player.play();
+
+                // Mostra i dettagli della canzone
+                var track = document.getElementById('mixcloudEmbedContainer').getAttribute('data-track');
+                var artist = document.getElementById('mixcloudEmbedContainer').getAttribute('data-artist');
+                document.getElementById('song-title').innerText = track;
+                document.getElementById('song-artist').innerText = artist;
+                document.getElementById('song-details').style.display = 'block';
+            });
+        };
     </script>
+
+    <script src="https://widget.mixcloud.com/media/js/widgetApi.js"></script>
 
 </body>
 </html>
