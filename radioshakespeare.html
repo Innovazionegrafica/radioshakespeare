@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Shakespeare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #1b5e20, #33691e); /* Darker green gradient */
+            font-family: 'Roboto Slab', serif;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            margin-bottom: 30px;
+            color: #ff7043; /* A more muted red-orange */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .radio-container {
+            background: linear-gradient(to bottom, #43a047, #2e7d32); /* Green gradient */
+            border-radius: 20px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            border: 2px solid #66bb6a; /* Lighter green border */
+        }
+
+        .speaker-grill {
+            background-color: #1b5e20; /* Even darker green */
+            height: 35px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .display {
+            background-color: #212121;
+            color: #fff;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-size: 1.3em;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Radio Shakespeare</h1>
+
+    <div class="radio-container">
+        <div class="display">Il tuo cuore non è mica un ladro</div>
+        <div class="speaker-grill"></div>
+        <div class="speaker-grill"></div>
+
+        <audio controls id="audioPlayer">
+            <source src="/Users/sandisk/Documents/Il_tuo_cuore.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+    </script>
+</body>
+</html>
